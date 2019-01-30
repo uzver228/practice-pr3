@@ -18,7 +18,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 
 
-AnsiString questions[15], answers[45], correct[15], images[15];
+AnsiString questions[15], answers[45], userans[15], correct[16], images[15];
 
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
@@ -27,7 +27,8 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
+int c_q = 0;
+int c_a = 0;
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
     FILE* f = fopen("task.txt", "rt");
@@ -59,7 +60,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
             //gets correct
             fgets(buf, 100, f);
             buf[strlen(buf) - 1] = '\0';
-            correct[count_q++] = buf;
+            correct[1 + count_q++] = buf;
         }
     }
     fclose(f);
@@ -71,8 +72,9 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
     Button2->Visible = true;
 }
 //---------------------------------------------------------------------------
-int c_q = 0;
-int c_a = 0;
+
+int corr_counter = 0;
+int c_ua = 0;
 
 void __fastcall TForm1::Button2Click(TObject *Sender)
 {
@@ -112,7 +114,12 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 
         for(int i = 0; i < 3; i++) {
             radios[i]->Caption = answers[c_a];
-            c_a = (c_a < 44) ? c_a + 1 : 0;
+
+            if(radios[i]->Checked)
+                userans[c_ua] = i+1;
+
+            if(c_a < 44)
+                c_a++;
         }
     }
 
@@ -127,7 +134,12 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 
         for(int i = 0; i < 3; i++) {
             checks[i]->Caption = answers[c_a];
-            c_a = (c_a < 44) ? c_a + 1 : 0;
+
+            if(checks[i]->Checked)
+                userans[c_ua] += IntToStr(i+1);
+
+            if(c_a < 44)
+                c_a++;
         }
     }
 
@@ -142,7 +154,11 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 
         for(int i = 0; i < 3; i++) {
             labels[i]->Caption = answers[c_a];
-            c_a = (c_a < 44) ? c_a + 1 : 0;
+
+            userans[c_ua] += edits[i]->Text;
+
+            if(c_a < 44)
+                c_a++;
         }
     }
 
@@ -152,8 +168,14 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
         checks[i]->Checked = false;
         edits[i]->Text = "";
     }
+    //Check correct
+    if(c_q != 0 && userans[c_ua] == correct[c_q])
+        Caption = ++corr_counter;
 
-    c_q = (c_q < 14) ? c_q + 1 : 0;
+    if(Sender != Button1)
+        c_ua++;
+    if(c_q < 14)
+        c_q++;
 }
 //---------------------------------------------------------------------------
 

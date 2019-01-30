@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "Unit1.h"
+#include "Unit2.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "pies"
@@ -27,8 +28,6 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-int c_q = 0;
-int c_a = 0;
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
     FILE* f = fopen("task.txt", "rt");
@@ -73,109 +72,121 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+int c_q = 0;
+int c_a = 0;
 int corr_counter = 0;
 int c_ua = 0;
 
 void __fastcall TForm1::Button2Click(TObject *Sender)
 {
-    TRadioButton* radios[3];
-    radios[0] = RadioButton1, radios[1] = RadioButton2, radios[2] = RadioButton3;
+    if(c_q < 15) {
+        TRadioButton* radios[3];
+        radios[0] = RadioButton1, radios[1] = RadioButton2, radios[2] = RadioButton3;
 
-    TCheckBox* checks[3];
-    checks[0] = CheckBox1, checks[1] = CheckBox2, checks[2] = CheckBox3;
+        TCheckBox* checks[3];
+        checks[0] = CheckBox1, checks[1] = CheckBox2, checks[2] = CheckBox3;
 
-    TEdit* edits[3];
-    edits[0] = Edit1, edits[1] = Edit2, edits[2] = Edit3;
+        TEdit* edits[3];
+        edits[0] = Edit1, edits[1] = Edit2, edits[2] = Edit3;
 
-    TLabel* labels[3];
-    labels[0] = Label3, labels[1] = Label4, labels[2] = Label5;
+        TLabel* labels[3];
+        labels[0] = Label3, labels[1] = Label4, labels[2] = Label5;
 
-    TLabel* numerics[3];
-    numerics[0] = Label6, numerics[1] = Label7, numerics[2] = Label8;
+        TLabel* numerics[3];
+        numerics[0] = Label6, numerics[1] = Label7, numerics[2] = Label8;
 
-    Label1->Caption = "Питання №" + IntToStr(c_q+1);
-    Label2->Caption = questions[c_q];
+        Label1->Caption = "Питання №" + IntToStr(c_q+1);
+        Label2->Caption = questions[c_q];
 
-    if(FileExists(images[c_q])) {
-        Image1->Picture->LoadFromFile(images[c_q]);
-        Image1->Visible = true;
-    }
-    else
-        Image1->Visible = false;
+        if(FileExists(images[c_q])) {
+            Image1->Picture->LoadFromFile(images[c_q]);
+            Image1->Visible = true;
+        }
+        else
+            Image1->Visible = false;
 
-    if(c_q < 5) {
-        for(int i = 0; i < 3; i++) {
-            radios[i]->Visible = true;
-            checks[i]->Visible = false;
-            edits[i]->Visible = false;
-            labels[i]->Visible = false;
-            numerics[i]->Visible = false;
+        if(c_q < 5) {
+            for(int i = 0; i < 3; i++) {
+                radios[i]->Visible = true;
+                checks[i]->Visible = false;
+                edits[i]->Visible = false;
+                labels[i]->Visible = false;
+                numerics[i]->Visible = false;
+            }
+
+            for(int i = 0; i < 3; i++) {
+                radios[i]->Caption = answers[c_a];
+                if(c_a < 44)
+                    c_a++;
+            }
         }
 
-        for(int i = 0; i < 3; i++) {
-            radios[i]->Caption = answers[c_a];
+        else if(c_q < 10) {
+            for(int i = 0; i < 3; i++) {
+                radios[i]->Visible = false;
+                checks[i]->Visible = true;
+                edits[i]->Visible = false;
+                labels[i]->Visible = false;
+                numerics[i]->Visible = false;
+            }
 
-            if(radios[i]->Checked)
-                userans[c_ua] = i+1;
-
-            if(c_a < 44)
-                c_a++;
-        }
-    }
-
-    else if(c_q < 10) {
-        for(int i = 0; i < 3; i++) {
-            radios[i]->Visible = false;
-            checks[i]->Visible = true;
-            edits[i]->Visible = false;
-            labels[i]->Visible = false;
-            numerics[i]->Visible = false;
+            for(int i = 0; i < 3; i++) {
+                checks[i]->Caption = answers[c_a];
+                if(c_a < 44)
+                    c_a++;
+            }
         }
 
-        for(int i = 0; i < 3; i++) {
-            checks[i]->Caption = answers[c_a];
+        else if(c_q < 15) {
+            for(int i = 0; i < 3; i++) {
+                radios[i]->Visible = false;
+                checks[i]->Visible = false;
+                edits[i]->Visible = true;
+                labels[i]->Visible = true;
+                numerics[i]->Visible = true;
+            }
 
-            if(checks[i]->Checked)
-                userans[c_ua] += IntToStr(i+1);
-
-            if(c_a < 44)
-                c_a++;
-        }
-    }
-
-    else if(c_q < 15) {
-        for(int i = 0; i < 3; i++) {
-            radios[i]->Visible = false;
-            checks[i]->Visible = false;
-            edits[i]->Visible = true;
-            labels[i]->Visible = true;
-            numerics[i]->Visible = true;
+            for(int i = 0; i < 3; i++) {
+                labels[i]->Caption = answers[c_a];
+                if(c_a < 44)
+                    c_a++;
+            }
         }
 
-        for(int i = 0; i < 3; i++) {
-            labels[i]->Caption = answers[c_a];
-
-            userans[c_ua] += edits[i]->Text;
-
-            if(c_a < 44)
-                c_a++;
+    //
+        if(c_q != 0 && c_q < 6) {
+            for(int i = 0; i < 3; i++)
+                if(radios[i]->Checked)
+                    userans[c_q-1] = i+1;
         }
-    }
+        else if(c_q < 11) {
+            for(int i = 0; i < 3; i++)
+                if(checks[i]->Checked)
+                    userans[c_q-1] += IntToStr(i+1);
+        }
+        else if(c_q < 16) {
+            for(int i = 0; i < 3; i++)
+                userans[c_q-1] += edits[i]->Text;
+        }
+    //
 
     //Cleaning up
-    for(int i = 0; i < 3; i++) {
-        radios[i]->Checked = false;
-        checks[i]->Checked = false;
-        edits[i]->Text = "";
-    }
+        for(int i = 0; i < 3; i++) {
+            radios[i]->Checked = false;
+            checks[i]->Checked = false;
+            edits[i]->Text = "";
+        }
     //Check correct
-    if(c_q != 0 && userans[c_ua] == correct[c_q])
-        Caption = ++corr_counter;
 
-    if(Sender != Button1)
-        c_ua++;
-    if(c_q < 14)
-        c_q++;
+        if(c_q != 0 && userans[c_q-1] == correct[c_q])
+            Label9->Caption = "Правильних відповідей: " + IntToStr(++corr_counter);
+        if(c_q < 15)
+            c_q++;
+    }
+    else {
+        Panel1->Visible = false;
+        CGauge1->Visible = false;
+    }
 }
 //---------------------------------------------------------------------------
 
@@ -186,4 +197,6 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
     Button2->Visible = false;
 }
 //---------------------------------------------------------------------------
+
+
 
