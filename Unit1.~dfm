@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 64
-  Top = 116
+  Left = 526
+  Top = 157
   Width = 754
   Height = 514
   Caption = 'Test'
@@ -27,7 +27,7 @@ object Form1: TForm1
     Left = 8
     Top = 8
     Width = 681
-    Height = 233
+    Height = 257
     TabOrder = 0
     object Label1: TLabel
       Left = 16
@@ -50,6 +50,13 @@ object Form1: TForm1
       Height = 217
       Center = True
       Proportional = True
+    end
+    object Label9: TLabel
+      Left = 16
+      Top = 232
+      Width = 122
+      Height = 13
+      Caption = #1055#1088#1072#1074#1080#1083#1100#1085#1080#1093' '#1074#1110#1076#1087#1086#1074#1110#1076#1077#1081': '
     end
     object GroupBox1: TGroupBox
       Left = 16

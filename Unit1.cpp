@@ -21,6 +21,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 AnsiString questions[15], answers[45], userans[15], correct[16], images[15];
 
+void SaveData();
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
@@ -79,22 +80,22 @@ int c_ua = 0;
 
 void __fastcall TForm1::Button2Click(TObject *Sender)
 {
+    TRadioButton* radios[3];
+    radios[0] = RadioButton1, radios[1] = RadioButton2, radios[2] = RadioButton3;
+
+    TCheckBox* checks[3];
+    checks[0] = CheckBox1, checks[1] = CheckBox2, checks[2] = CheckBox3;
+
+    TEdit* edits[3];
+    edits[0] = Edit1, edits[1] = Edit2, edits[2] = Edit3;
+
+    TLabel* labels[3];
+    labels[0] = Label3, labels[1] = Label4, labels[2] = Label5;
+
+    TLabel* numerics[3];
+    numerics[0] = Label6, numerics[1] = Label7, numerics[2] = Label8;
+
     if(c_q < 15) {
-        TRadioButton* radios[3];
-        radios[0] = RadioButton1, radios[1] = RadioButton2, radios[2] = RadioButton3;
-
-        TCheckBox* checks[3];
-        checks[0] = CheckBox1, checks[1] = CheckBox2, checks[2] = CheckBox3;
-
-        TEdit* edits[3];
-        edits[0] = Edit1, edits[1] = Edit2, edits[2] = Edit3;
-
-        TLabel* labels[3];
-        labels[0] = Label3, labels[1] = Label4, labels[2] = Label5;
-
-        TLabel* numerics[3];
-        numerics[0] = Label6, numerics[1] = Label7, numerics[2] = Label8;
-
         Label1->Caption = "Питання №" + IntToStr(c_q+1);
         Label2->Caption = questions[c_q];
 
@@ -180,12 +181,31 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 
         if(c_q != 0 && userans[c_q-1] == correct[c_q])
             Label9->Caption = "Правильних відповідей: " + IntToStr(++corr_counter);
-        if(c_q < 15)
+        if(c_q < 16)
             c_q++;
     }
-    else {
+    else if(c_q < 16) {
+
+        for(int i = 0; i < 3; i++)
+                userans[c_q-1] += edits[i]->Text;
+
+        for(int i = 0; i < 3; i++) {
+            radios[i]->Checked = false;
+            checks[i]->Checked = false;
+            edits[i]->Text = "";
+        }
+
+        if(c_q != 0 && userans[c_q-1] == correct[c_q])
+            Label9->Caption = "Правильних відповідей: " + IntToStr(++corr_counter);
+        if(c_q < 16)
+            c_q++;
+
         Panel1->Visible = false;
         CGauge1->Visible = false;
+        Label10->Visible = true;
+        Button2->Visible = false;
+        Button3->Visible = true;
+        SaveData();
     }
 }
 //---------------------------------------------------------------------------
@@ -200,3 +220,17 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 
 
 
+void __fastcall TForm1::Button3Click(TObject *Sender)
+{
+    Form1->Close();
+}
+//---------------------------------------------------------------------------
+
+void SaveData() {
+    AnsiString user, date, result;
+    date = Now().DateString();
+    user = Form2->Edit1->Text;
+    result = corr_counter;
+
+    SaveToFile();
+}
