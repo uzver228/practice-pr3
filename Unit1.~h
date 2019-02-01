@@ -13,6 +13,8 @@
 #include "CGAUGES.h"
 #include <stdio.h>
 //---------------------------------------------------------------------------
+AnsiString Encoder(AnsiString);
+
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components

@@ -1,119 +1,119 @@
 11
-WhyThatBecause?
+В якому році засновано компанію Apple?
 1
-ans11
-ans12
-ans13
+1976
+1975
+1970
 1
 
 12
-SecondQuest?
+Хто засновав компанію Apple?
 2
-ans21
-ans22
-ans23
+Максим Надворний
+Стив Джобс
+Стив Возняк
 2
 
 13
-WhataboutTHIRD?
+В якому році з'явився перший компьютер?
 3
-ans31
-ans32
-ans33
+1945
+1933
+1950
 1
 
 14
-QUATTRO???
+Хто випустив перший ПК?
 4
-ans41
-ans42
-ans43
+Microsoft
+Apple
+IBM
 3
 
 15
-GiveFive!
+Засновник компанії Microsoft?
 5
-ans51
-ans52
-ans53
+Джон Кармак
+Біл Гейтс
+Ілон Маск
 2
 
 21
-level2Quest1
+Компанії, які засновав Ілон Маск?
 6
-ans2.11
-ans2.12
-ans2.13
+Tesla Inc.
+Microsoft
+SpaceX
 13
 
 22
-level2Quest2
+Процесори з CISC архітектурой?
 1
-ans2.21
-ans2.22
-ans2.23
+x86
+ARM
+AVR
 1
 
 23
-level2Quest3
+Аналогові інтерфейси?
 1
-ans2.31
-ans2.32
-ans2.33
+HDMI
+USB
+VGA
 3
 
 24
-level2Quest4
+Відеоінтерфейси?
 1
-ans2.41
-ans2.42
-ans2.43
+HDMI
+DisplayPort
+DVI
 123
 
 25
-level2Quest5
+Засновники компанії Alphabet Inc.
 1
-ans2.51
-ans2.52
-ans2.53
+Джон Кармак
+Сергей Брін
+Лінус Торвальдс
 2
 
 31
-lvl3qst1
+Розробники та їх ОС?
 1
-ans3.11_A.bla
-ans3.12_B.bla
-ans3.13_C.bla
+1.Стив Джобс  A.macOS X
+2.Біл Гейтс  B.Windows
+3.Лінус Торвальдс  C.Linux
 ABC
 
 32
-lvl3qst2
+Компанії та їх розробки?
 1
-ans3.21_A.bla
-ans3.22_B.bla
-ans3.23_C.bla
+1.NVidia  A.Core
+2.AMD  B.GCN
+3.Intel  C.Maxwell
 CBA
 
 33
-lvl3qst3
+Компоненти та їх інтерфейси?
 0
-ans3.31_A.bla
-ans3.32_B.bla
-ans3.33_C.bla
+1.PCI-E  A.Sata
+2.HDD  B.Відеокарта
+3.DIMM  C.ОЗП
 BAC
 
 34
-lvl3qst4
+Компанії та їх засновники?
 1
-ans3.41_A.bla
-ans3.42_B.bla
-ans3.43_C.bla
+1.Facebook  A.Ілон Маск
+2.Telegram  B.Марк Цукерберг
+3.TheBoringCompany  C.Павло Дуров
 BCA
 
 35
-lvl3qst5
+Мови програмування та їх розробники?
 1
-ans3.51_A.bla
-ans3.52_B.bla
-ans3.53_C.bla
+1.С  A.Денніс Рітчі
+2.С++  B.Джеймс Гослінг
+3.Java  C.Бьорн Страуструп
 ACB

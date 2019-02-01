@@ -58,9 +58,9 @@ object Form1: TForm1
       Caption = 'Label2'
     end
     object Image1: TImage
-      Left = 408
+      Left = 456
       Top = 8
-      Width = 249
+      Width = 201
       Height = 217
       Center = True
       Proportional = True
@@ -75,26 +75,26 @@ object Form1: TForm1
     object GroupBox1: TGroupBox
       Left = 16
       Top = 72
-      Width = 345
+      Width = 409
       Height = 145
       Caption = #1042#1072#1088#1110#1072#1085#1090#1080' '#1074#1110#1076#1087#1086#1074#1110#1076#1077#1081
       TabOrder = 0
       object Label3: TLabel
-        Left = 96
+        Left = 168
         Top = 24
         Width = 32
         Height = 13
         Caption = 'Label3'
       end
       object Label4: TLabel
-        Left = 96
+        Left = 168
         Top = 64
         Width = 32
         Height = 13
         Caption = 'Label3'
       end
       object Label5: TLabel
-        Left = 96
+        Left = 168
         Top = 104
         Width = 32
         Height = 13
@@ -124,7 +124,7 @@ object Form1: TForm1
       object CheckBox1: TCheckBox
         Left = 8
         Top = 24
-        Width = 65
+        Width = 153
         Height = 17
         Caption = 'CheckBox1'
         TabOrder = 0
@@ -132,7 +132,7 @@ object Form1: TForm1
       object CheckBox3: TCheckBox
         Left = 8
         Top = 104
-        Width = 65
+        Width = 153
         Height = 17
         Caption = 'CheckBox1'
         TabOrder = 1
@@ -140,7 +140,7 @@ object Form1: TForm1
       object CheckBox2: TCheckBox
         Left = 8
         Top = 64
-        Width = 73
+        Width = 153
         Height = 17
         Caption = 'CheckBox1'
         TabOrder = 2
@@ -148,7 +148,7 @@ object Form1: TForm1
       object RadioButton1: TRadioButton
         Left = 8
         Top = 24
-        Width = 65
+        Width = 153
         Height = 17
         Caption = 'Radio1'
         TabOrder = 3
@@ -156,7 +156,7 @@ object Form1: TForm1
       object RadioButton2: TRadioButton
         Left = 8
         Top = 64
-        Width = 73
+        Width = 153
         Height = 17
         Caption = 'Radio1'
         TabOrder = 4
@@ -164,7 +164,7 @@ object Form1: TForm1
       object RadioButton3: TRadioButton
         Left = 8
         Top = 104
-        Width = 65
+        Width = 153
         Height = 17
         Caption = 'Radio1'
         TabOrder = 5

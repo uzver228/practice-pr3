@@ -246,13 +246,18 @@ void SaveData() {
     output1 = Encoder(input[0]);
     output2 = Encoder(input[1]);
     output3 = Encoder(input[2]);
+    AnsiString output[3];
+    output[0] = output1, output[1] = output2, output[2] = output3;
 
-    Form1->Memo1->Lines->Add(output1);
-    Form1->Memo1->Lines->Add(output2);
-    Form1->Memo1->Lines->Add(output3);
+    Form1->Memo1->Lines->Add(input[0]);
+    Form1->Memo1->Lines->Add(input[1]);
+    Form1->Memo1->Lines->Add(input[2]);
 
     Form1->Memo2->Lines->LoadFromFile("result.txt");
-    Form1->Memo2->Lines->AddStrings(Form1->Memo1->Lines);
+    //Form1->Memo2->Lines->AddStrings(Form1->Memo1->Lines);
+    for(int i = 0; i < Form1->Memo1->Lines->Count; i++) {
+        Form1->Memo2->Lines->Add(output[i]);
+    }
     Form1->Memo2->Lines->Add("");
 
 
