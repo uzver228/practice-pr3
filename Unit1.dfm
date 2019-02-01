@@ -1,5 +1,5 @@
 object Form1: TForm1
-  Left = 232
+  Left = 408
   Top = 142
   Width = 754
   Height = 514
@@ -27,7 +27,7 @@ object Form1: TForm1
     Left = 272
     Top = 152
     Width = 142
-    Height = 137
+    Height = 24
     Caption = #1058#1077#1089#1090' '#1087#1088#1086#1081#1076#1077#1085#1086'!'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -219,6 +219,22 @@ object Form1: TForm1
     TabOrder = 3
     Visible = False
     OnClick = Button3Click
+  end
+  object Memo1: TMemo
+    Left = 240
+    Top = 272
+    Width = 209
+    Height = 145
+    TabOrder = 4
+    Visible = False
+  end
+  object Memo2: TMemo
+    Left = 480
+    Top = 288
+    Width = 41
+    Height = 33
+    TabOrder = 5
+    Visible = False
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer

@@ -5,6 +5,7 @@
 
 #include "Unit1.h"
 #include "Unit2.h"
+#include "Unit3.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "pies"
@@ -21,7 +22,13 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 AnsiString questions[15], answers[45], userans[15], correct[16], images[15];
 
+int c_q = 0;
+int c_a = 0;
+int corr_counter = 0;
+int c_ua = 0;
+
 void SaveData();
+//AnsiString Encoder(AnsiString);
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
@@ -72,11 +79,6 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
     Button2->Visible = true;
 }
 //---------------------------------------------------------------------------
-
-int c_q = 0;
-int c_a = 0;
-int corr_counter = 0;
-int c_ua = 0;
 
 void __fastcall TForm1::Button2Click(TObject *Sender)
 {
@@ -206,6 +208,7 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
         Button2->Visible = false;
         Button3->Visible = true;
         SaveData();
+        Memo1->Visible = true;
     }
 }
 //---------------------------------------------------------------------------
@@ -215,10 +218,13 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
     Panel1->Visible = false;
     Timer1->Enabled = false;
     Button2->Visible = false;
+
+    c_q = 0;
+    c_a = 0;
+    corr_counter = 0;
+    c_ua = 0;
 }
 //---------------------------------------------------------------------------
-
-
 
 void __fastcall TForm1::Button3Click(TObject *Sender)
 {
@@ -232,5 +238,38 @@ void SaveData() {
     user = Form2->Edit1->Text;
     result = corr_counter;
 
-    SaveToFile();
+    AnsiString input[3], output1, output2, output3;
+    input[0] = "Тест проходив: " + user;
+    input[1] = "Дата проходження: " + date;
+    input[2] = "Результат: " + result;
+
+    output1 = Encoder(input[0]);
+    output2 = Encoder(input[1]);
+    output3 = Encoder(input[2]);
+
+    Form1->Memo1->Lines->Add(output1);
+    Form1->Memo1->Lines->Add(output2);
+    Form1->Memo1->Lines->Add(output3);
+
+    Form1->Memo2->Lines->LoadFromFile("result.txt");
+    Form1->Memo2->Lines->AddStrings(Form1->Memo1->Lines);
+    Form1->Memo2->Lines->Add("");
+
+
+    Form1->Memo2->Lines->SaveToFile("result.txt");
+}
+
+AnsiString Encoder(AnsiString input) {
+    char* key = "jghtyiopgsregegejohuhygbge";
+    int length = input.Length() + 1;
+
+    char* msg = new char[length];
+    static AnsiString encoded;
+
+    for(int i = 0; i < input.Length(); i++)
+        msg[i] = input.c_str()[i] ^ key[i];
+
+    msg[length - 1] = '\0';
+    encoded = msg;
+    return encoded;
 }

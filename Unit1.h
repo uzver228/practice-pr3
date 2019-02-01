@@ -13,6 +13,8 @@
 #include "CGAUGES.h"
 #include <stdio.h>
 //---------------------------------------------------------------------------
+AnsiString Encoder(AnsiString);
+
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
@@ -43,6 +45,8 @@ __published:	// IDE-managed Components
         TLabel *Label9;
         TLabel *Label10;
         TButton *Button3;
+        TMemo *Memo1;
+        TMemo *Memo2;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall Button1Click(TObject *Sender);
         void __fastcall Button2Click(TObject *Sender);
